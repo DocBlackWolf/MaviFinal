@@ -3,10 +3,12 @@
 
 SoundHandler::SoundHandler() {
     // Load the sound buffer for jump sound
-    if (!jumpBuffer.loadFromFile("Recursos/Sonido/jump.ogg")) {
+    if (!jumpBuffer.loadFromFile("Recursos/Sonido/jump.ogg")) 
+    {
         std::cerr << "Error loading jump.wav" << std::endl;
     }
-    else {
+    else 
+    {
         jump.setBuffer(jumpBuffer);
     }
 
@@ -14,7 +16,8 @@ SoundHandler::SoundHandler() {
     if (!hitBuffer.loadFromFile("Recursos/Sonido/coin.ogg")) {
         std::cerr << "Error loading hit.wav" << std::endl;
     }
-    else {
+    else 
+    {
         hit.setBuffer(hitBuffer);
     }
 
@@ -22,22 +25,26 @@ SoundHandler::SoundHandler() {
     if (!winBuffer.loadFromFile("Recursos/Sonido/coin.ogg")) {
         std::cerr << "Error loading win.wav" << std::endl;
     }
-    else {
+    else 
+    {
         win.setBuffer(winBuffer);
     }
 }
 
 // Method to play the jump sound
-void SoundHandler::playJumpSound() {
+void SoundHandler::playJumpSound() 
+{
     jump.play();
 }
 
 // Method to play the hit sound
-void SoundHandler::playHitSound() {
+void SoundHandler::playHitSound() 
+{
     hit.play();
 }
 
 // Method to play the win sound
-void SoundHandler::playWinSound() {
+void SoundHandler::playWinSound() 
+{
     win.play();
 }
