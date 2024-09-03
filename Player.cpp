@@ -10,10 +10,10 @@ Player::Player(const sf::Texture& texture)
 void Player::Movement(float Delta)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        PlayerPos.x += 150.0f * Delta;
+        PlayerPos.x += 350.0f * Delta;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        PlayerPos.x -= 150.0f * Delta;
+        PlayerPos.x -= 350.0f * Delta;
     }
 
     PlayerPos.y += 300.0f * Delta;

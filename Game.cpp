@@ -52,7 +52,7 @@ void Game::ProcessEvents()
 		{
 			
 			sf::Vector2f playerPos = _player->GetPos();
-			_bullets.push_back(Bullet(_textureManager->GetTexture("bullet"), playerPos.x, playerPos.y));
+			_bullets.push_back(Bullet(_textureManager->GetTexture("bullet"), playerPos.x + 65 , playerPos.y));
 		}
 	}
 }

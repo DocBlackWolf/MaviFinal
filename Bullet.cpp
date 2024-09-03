@@ -18,6 +18,11 @@ void Bullet::Draw(sf::RenderWindow* _wnd)
     _wnd->draw(bullet);
 }
 
+float Bullet::GetTimeAlive()
+{
+    return timeAlive.getElapsedTime().asSeconds();
+}
+
 sf::FloatRect Bullet::GetBounds() const
 {
     return bullet.getGlobalBounds();
