@@ -4,7 +4,7 @@
 Game::Game()
 {
 	_wnd = std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 600), "game window");
-
+	_player = std::make_unique<Player>();
 
 
 
@@ -30,6 +30,7 @@ void Game::Loop()
 
 void Game::Update(float delta)
 {
+	_player->Movement(delta);
 }
 
 void Game::ProcessEvents()
@@ -39,6 +40,11 @@ void Game::ProcessEvents()
 
 void Game::Draw()
 {
+	_wnd->clear(sf::Color::White);
 
+	//Draw calls
+	_player->Draw(_wnd);
+	//xxxxxxxxxxxxxxxx//
 
+	_wnd->display();
 }

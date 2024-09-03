@@ -18,8 +18,8 @@ void Player::Movement(float Delta)
     }
 
     PlayerPos.y += 300.0f * Delta;
-    if (PlayerPos.y > 500.0f) {
-        PlayerPos.y = 500.0f;
+    if (PlayerPos.y > 450.0f) {
+        PlayerPos.y = 450.0f;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !Jumped) {

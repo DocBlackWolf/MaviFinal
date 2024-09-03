@@ -1,4 +1,5 @@
 #pragma once
+#include "Player.h"
 #include "libs.h"
 
 class Game
@@ -10,6 +11,7 @@ private:
 
 	//window
 	std::unique_ptr<sf::RenderWindow> _wnd;
+	std::unique_ptr<Player> _player;
 
 
 public:
