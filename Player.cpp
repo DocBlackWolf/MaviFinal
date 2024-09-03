@@ -17,15 +17,8 @@ void Player::Movement(float Delta)
     }
 
     PlayerPos.y += 300.0f * Delta;
-    if (PlayerPos.y > 450.0f) {
-        PlayerPos.y = 450.0f;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !Jumped) {
-        PlayerPos.y -= 50.0f;
-        Jumped = true;
-        _sound->playJumpSound();
-        TSJ.restart();
+    if (PlayerPos.y > 600.0f) {
+        PlayerPos.y = 600.0f;
     }
 
     if (TSJ.getElapsedTime().asMilliseconds() > 500) {

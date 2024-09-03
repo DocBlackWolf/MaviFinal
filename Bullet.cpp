@@ -9,7 +9,7 @@ Bullet::Bullet(const sf::Texture& texture, float x, float y)
 
 void Bullet::Movement(float delta)
 {
-    y += 10 * delta;
+    y -= 600 * delta;
     bullet.setPosition(bullet.getPosition().x, y);
 }
 

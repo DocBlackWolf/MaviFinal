@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "TextureManager.h"
+#include "Bullet.h"
 #include "libs.h"
 
 class Game
@@ -12,9 +13,12 @@ private:
 
 	//window
 	sf::RenderWindow* _wnd;
+	//texture manager
 	TextureManager* _textureManager;
-	Player* _player;
 
+	//Game objects
+	Player* _player;
+	std::vector<Bullet> _bullets;
 
 public:
 
