@@ -3,8 +3,10 @@
 
 Game::Game()
 {
-	_wnd = std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 600), "game window");
-	_player = std::make_unique<Player>();
+	_wnd = new sf::RenderWindow(sf::VideoMode(800, 600), "Game Window");
+	_textureManager = new TextureManager();
+	_player = new Player(_textureManager->GetTexture("player"));
+
 
 
 

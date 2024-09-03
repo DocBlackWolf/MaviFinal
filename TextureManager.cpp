@@ -3,9 +3,9 @@
 
 TextureManager::TextureManager()
 {
-    LoadTexture("player", "path/to/player_texture.png");
-    LoadTexture("bullet", "path/to/bullet_texture.png");
-    LoadTexture("enemy", "path/to/enemy_texture.png");
+    LoadTexture("player", "Recursos/Imagenes/jumper.png");
+    LoadTexture("bullet", "Recursos/Imagenes/bullet.png");
+    LoadTexture("enemy", "Recursos/Imagenes/stone.png");
 }
 
 void TextureManager::LoadTexture(const std::string& textureName, const std::string& filePath)
@@ -17,4 +17,5 @@ void TextureManager::LoadTexture(const std::string& textureName, const std::stri
 
 const sf::Texture& TextureManager::GetTexture(const std::string& textureName)
 {
-    return textures[textureName];  
+    return textures[textureName];
+}

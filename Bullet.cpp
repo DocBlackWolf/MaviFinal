@@ -13,7 +13,7 @@ void Bullet::Movement(float delta)
     bullet.setPosition(bullet.getPosition().x, y);
 }
 
-void Bullet::Draw(std::unique_ptr<sf::RenderWindow>& _wnd)
+void Bullet::Draw(sf::RenderWindow* _wnd)
 {
     _wnd->draw(bullet);
 }

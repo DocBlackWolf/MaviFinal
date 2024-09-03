@@ -11,7 +11,7 @@ private:
 public:
 	Bullet(const sf::Texture& texture, float x, float y);
 	void Movement(float delta);
-	void Draw(std::unique_ptr<sf::RenderWindow>& _wnd);
+	void Draw(sf::RenderWindow* _wnd);
 	sf::FloatRect GetBounds() const;
 
 };

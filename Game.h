@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "TextureManager.h"
 #include "libs.h"
 
 class Game
@@ -10,8 +11,9 @@ private:
 	void ProcessEvents();
 
 	//window
-	std::unique_ptr<sf::RenderWindow> _wnd;
-	std::unique_ptr<Player> _player;
+	sf::RenderWindow* _wnd;
+	TextureManager* _textureManager;
+	Player* _player;
 
 
 public:

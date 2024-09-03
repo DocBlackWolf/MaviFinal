@@ -1,11 +1,10 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(const sf::Texture& texture)
     : PlayerPos(100.0f, 500.0f), JumpSpeed(800.0f), Jumped(false),
     _sound(std::make_unique<SoundHandler>())
 {
-    playerText.loadFromFile("Recursos/Imagenes/jumper.png");
-    playerSpr.setTexture(playerText);
+    playerSpr.setTexture(texture);
 }
 
 void Player::Movement(float Delta)
@@ -34,7 +33,7 @@ void Player::Movement(float Delta)
     }
 }
 
-void Player::Draw(std::unique_ptr<sf::RenderWindow>& _wnd)
+void Player::Draw(sf::RenderWindow* _wnd)
 {
     playerSpr.setPosition(PlayerPos);
     _wnd->draw(playerSpr);

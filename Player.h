@@ -6,10 +6,10 @@
 class Player
 {
 public:
-    Player();
+    Player(const sf::Texture& texture);
 
     void Movement(float Delta);
-    void Draw(std::unique_ptr<sf::RenderWindow>& _wnd);
+    void Draw(sf::RenderWindow* _wnd);
     void SetPos(sf::Vector2f Pos);
 
     sf::Vector2f GetPos() const;
@@ -18,7 +18,6 @@ public:
 private:
     std::unique_ptr<SoundHandler> _sound;
 
-    sf::Texture playerText;
     sf::Sprite playerSpr;
 
     sf::Vector2f PlayerPos;
