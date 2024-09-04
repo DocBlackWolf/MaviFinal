@@ -5,6 +5,7 @@ Bullet::Bullet(const sf::Texture& texture, float x, float y)
 {
     bullet.setTexture(texture);
     bullet.setPosition(x, y);
+    bullet.setScale(0.5, 0.5);
 }
 
 void Bullet::Movement(float delta)

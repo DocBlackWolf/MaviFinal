@@ -1,74 +1,133 @@
 #include "Game.h"
 
-
 Game::Game()
 {
-	_wnd = new sf::RenderWindow(sf::VideoMode(1280, 720), "Game Window");
-	_textureManager = new TextureManager();
-	_player = new Player(_textureManager->GetTexture("player"));
-
-
-
-
+    _wnd = new sf::RenderWindow(sf::VideoMode(1280, 720), "Game Window");
+    _textureManager = new TextureManager();
+    _display = new Display();
+    _player = new Player(_textureManager->GetTexture("player"));
 }
 
 void Game::Loop()
 {
-	sf::Clock clock;
-	clock.restart();
-	float delta;
-	while (_wnd->isOpen())
-	{
-		delta = clock.restart().asSeconds();
+    sf::Clock clock;
+    clock.restart();
+    float delta;
+    while (_wnd->isOpen())
+    {
+        delta = clock.restart().asSeconds();
 
-		ProcessEvents();
-		Draw();
-		Update(delta);
-	}
-
-
+        ProcessEvents();
+        Update(delta);
+        Draw();
+    }
 }
-
 
 void Game::Update(float delta)
 {
-	_player->Movement(delta);
+    display.Update();
 
-	for (auto& bullet : _bullets)
-	{
-		bullet.Movement(delta);
-	}
+    _player->Movement(delta);
+
+    // Bullet movement
+    for (auto& bullet : _bullets)
+    {
+        bullet.Movement(delta);
+    }
+
+    // Stone movement and out-of-bounds deletion
+    for (auto it = _rocks.begin(); it != _rocks.end();)
+    {
+        it->Movement(delta, _wnd->getSize().x, _wnd->getSize().y);
+
+        if (it->GetPos().y >= _wnd->getSize().y)
+        {
+            it = _rocks.erase(it); // Remove rock if it goes out of bounds
+       
+        }
+        else
+        {
+            ++it;
+        }
+    }
+
+    // Rock spawning
+    if (rockSpawn.getElapsedTime().asSeconds() > 1)
+    {
+        float randomX = static_cast<float>(rand() % static_cast<int>(_wnd->getSize().x));
+        float randomVelocityX = static_cast<float>((rand() % 200) - 100) / 100.0f; // Horizontal velocity between -1.0 and 1.0
+        _rocks.push_back(Stone(_textureManager->GetTexture("stone"), randomVelocityX, randomX,80,0 ));
+        rockSpawn.restart();
+    }
+
+    // Collision detection
+    CheckCollisions();
 }
 
 void Game::ProcessEvents()
 {
-	sf::Event event;
-	while (_wnd->pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed)
-			_wnd->close();
+    sf::Event event;
+    while (_wnd->pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+            _wnd->close();
 
-		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)
-		{
-			
-			sf::Vector2f playerPos = _player->GetPos();
-			_bullets.push_back(Bullet(_textureManager->GetTexture("bullet"), playerPos.x + 65 , playerPos.y));
-		}
-	}
+        // Handle bullet creation on Space key press
+        if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space && lastInput.getElapsedTime().asSeconds() > 0.1)
+        {
+            sf::Vector2f playerPos = _player->GetPos();
+            _bullets.push_back(Bullet(_textureManager->GetTexture("bullet"), playerPos.x + 60, playerPos.y));
+            lastInput.restart();
+        }
+    }
 }
 
 void Game::Draw()
 {
-	_wnd->clear(sf::Color::White);
+    _wnd->clear(sf::Color::White);
 
-	//Draw calls
-	_player->Draw(_wnd);
+    // Draw player
+    _player->Draw(_wnd);
 
-	for (auto& bullet : _bullets)
-	{
-		bullet.Draw(_wnd);
-	}
-	//xxxxxxxxxxxxxxxx//
+    // Draw bullets
+    for (auto& bullet : _bullets)
+    {
+        bullet.Draw(_wnd);
+    }
 
-	_wnd->display();
+    // Draw rocks
+    for (auto& rock : _rocks)
+    {
+        rock.Draw(_wnd);
+    }
+
+    _wnd->display();
+}
+
+void Game::CheckCollisions()
+{
+    for (auto bulletIt = _bullets.begin(); bulletIt != _bullets.end();)
+    {
+        bool bulletRemoved = false;
+
+        for (auto stoneIt = _rocks.begin(); stoneIt != _rocks.end();)
+        {
+            if (bulletIt->GetBounds().intersects(stoneIt->GetBounds()))
+            {
+                stoneIt = _rocks.erase(stoneIt);
+                bulletIt = _bullets.erase(bulletIt);
+                bulletRemoved = true;
+                break;
+            }
+            else
+            {
+                ++stoneIt;
+            }
+        }
+
+        if (!bulletRemoved)
+        {
+            ++bulletIt;
+        }
+    }
 }

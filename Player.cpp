@@ -5,15 +5,16 @@ Player::Player(const sf::Texture& texture)
     _sound(std::make_unique<SoundHandler>())
 {
     playerSpr.setTexture(texture);
+    playerSpr.setScale(0.7f, 0.7f);
 }
 
 void Player::Movement(float Delta)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        PlayerPos.x += 350.0f * Delta;
+        PlayerPos.x += 550.0f * Delta;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        PlayerPos.x -= 350.0f * Delta;
+        PlayerPos.x -= 550.0f * Delta;
     }
 
     PlayerPos.y += 300.0f * Delta;
@@ -39,7 +40,7 @@ void Player::SetPos(sf::Vector2f Pos)
 
 sf::Vector2f Player::GetPos() const
 {
-    return PlayerPos;
+    return playerSpr.getPosition();
 }
 
 sf::FloatRect Player::GetBounds() const
