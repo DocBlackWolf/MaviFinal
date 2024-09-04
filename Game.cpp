@@ -27,6 +27,10 @@ void Game::Loop()
 void Game::Update(float delta)
 {
     _display->Update();
+    if (_display->GetRemainingTime() <= 0) 
+    {
+
+    }
 
     if (_display->GetRemainingTime() > 0)
 {
