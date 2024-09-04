@@ -30,6 +30,9 @@ private:
 	sf::Clock rockSpawn;
 	sf::Clock lastInput;
 
+	//values
+	int gameScore;
+
 public:
 
 	Game();

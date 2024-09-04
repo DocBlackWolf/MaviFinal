@@ -5,7 +5,7 @@ Game::Game()
     _wnd = new sf::RenderWindow(sf::VideoMode(1280, 720), "Game Window");
     _textureManager = new TextureManager();
     _display = new Display("Recursos/Fuentes/junegull.ttf");
-    _display->StartCountdown(10, 300, 300);
+    _display->StartCountdown(10, 1000, 100);
     _player = new Player(_textureManager->GetTexture("player"));
 }
 
@@ -29,7 +29,8 @@ void Game::Update(float delta)
     _display->Update();
     if (_display->GetRemainingTime() <= 0) 
     {
-
+        std::string scoreText = "Total Score: " + std::to_string(gameScore);
+        _display->SetText(scoreText,300,300);
     }
 
     if (_display->GetRemainingTime() > 0)
@@ -132,6 +133,7 @@ void Game::CheckCollisions()
                 stoneIt = _rocks.erase(stoneIt);
                 bulletIt = _bullets.erase(bulletIt);
                 bulletRemoved = true;
+                gameScore++;
                 break;
             }
             else

@@ -1,14 +1,12 @@
 ﻿  Game.cpp
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,63): warning C4244:         with
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,63): warning C4244:         [
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,63): warning C4244:             T=unsigned int
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,63): warning C4244:         ]
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,44): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,44): warning C4244:         with
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,44): warning C4244:         [
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,44): warning C4244:             T=unsigned int
-C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(44,44): warning C4244:         ]
-  main.cpp
-  Generando código...
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,63): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,63): warning C4244:         with
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,63): warning C4244:         [
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,63): warning C4244:             T=unsigned int
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,63): warning C4244:         ]
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,44): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,44): warning C4244:         with
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,44): warning C4244:         [
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,44): warning C4244:             T=unsigned int
+C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\Game.cpp(49,44): warning C4244:         ]
   SFML PREMADE.vcxproj -> C:\Users\exequ\source\repos\DocBlackWolf\FinalMavi\x64\Debug\FinalMavi.exe
