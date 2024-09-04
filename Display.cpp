@@ -51,3 +51,10 @@
         window->draw(displayText);
     }
 
+    float Display::GetRemainingTime() const
+    {
+        sf::Time elapsed = clock.getElapsedTime();
+        sf::Time remaining = countdownTime - elapsed;
+        return remaining.asSeconds() > 0 ? remaining.asSeconds() : 0.0f;
+    }
+

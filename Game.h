@@ -9,10 +9,11 @@
 class Game
 {
 private:
-	void Draw();
-	void Update(float delta);
-	void ProcessEvents();
-	void CheckCollisions();
+	void Draw(); // Method for all the draw calls
+	void Update(float delta); // Method for handling main logic
+	void ProcessEvents(); //Method mainly intended to handle imputs
+	void CheckCollisions(); //Method for cheking collitions
+	void ResetGame(); // Method for reseting the game
 
 	//window
 	sf::RenderWindow* _wnd;

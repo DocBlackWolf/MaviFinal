@@ -24,4 +24,7 @@ public:
 
     // Method to draw the text on the provided window
     void Draw(sf::RenderWindow* window);
+
+    // Method to return the remaning time
+    float GetRemainingTime() const;
 };

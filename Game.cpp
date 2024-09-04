@@ -5,7 +5,7 @@ Game::Game()
     _wnd = new sf::RenderWindow(sf::VideoMode(1280, 720), "Game Window");
     _textureManager = new TextureManager();
     _display = new Display("Recursos/Fuentes/junegull.ttf");
-    _display->StartCountdown(60, 300, 300);
+    _display->StartCountdown(10, 300, 300);
     _player = new Player(_textureManager->GetTexture("player"));
 }
 
@@ -28,7 +28,9 @@ void Game::Update(float delta)
 {
     _display->Update();
 
-    _player->Movement(delta);
+    if (_display->GetRemainingTime() > 0)
+{
+        _player->Movement(delta);
 
     // Bullet movement
     for (auto& bullet : _bullets)
@@ -44,7 +46,7 @@ void Game::Update(float delta)
         if (it->GetPos().y >= _wnd->getSize().y)
         {
             it = _rocks.erase(it); // Remove rock if it goes out of bounds
-       
+
         }
         else
         {
@@ -60,6 +62,7 @@ void Game::Update(float delta)
         _rocks.push_back(Stone(_textureManager->GetTexture("stone"), randomVelocityX, randomX,80,0 ));
         rockSpawn.restart();
     }
+}
 
     // Collision detection
     CheckCollisions();
@@ -79,6 +82,10 @@ void Game::ProcessEvents()
             sf::Vector2f playerPos = _player->GetPos();
             _bullets.push_back(Bullet(_textureManager->GetTexture("bullet"), playerPos.x + 60, playerPos.y));
             lastInput.restart();
+        }
+        if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
+        {
+            ResetGame();
         }
     }
 }
@@ -134,4 +141,12 @@ void Game::CheckCollisions()
             ++bulletIt;
         }
     }
+}
+
+void Game::ResetGame()
+{
+    _bullets.clear();
+    _rocks.clear();
+    _player = new Player(_textureManager->GetTexture("player"));
+    _display->StartCountdown(10, 300, 300);
 }
