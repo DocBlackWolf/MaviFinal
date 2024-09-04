@@ -6,6 +6,7 @@ TextureManager::TextureManager()
     LoadTexture("player", "Recursos/Imagenes/jumper.png");
     LoadTexture("bullet", "Recursos/Imagenes/bullet.png");
     LoadTexture("stone", "Recursos/Imagenes/stone.png");
+    LoadTexture("background", "Recursos/Imagenes/mundo_fondo.jpg");
 }
 
 void TextureManager::LoadTexture(const std::string& textureName, const std::string& filePath)

@@ -13,7 +13,7 @@ SoundHandler::SoundHandler() {
     }
 
     // Load the sound buffer for hit sound
-    if (!hitBuffer.loadFromFile("Recursos/Sonido/coin.ogg")) {
+    if (!hitBuffer.loadFromFile("Recursos/Sonido/hit.ogg")) {
         std::cerr << "Error loading hit.wav" << std::endl;
     }
     else 

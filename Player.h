@@ -1,7 +1,7 @@
 #pragma once
 
 #include "libs.h"
-#include "SoundHandler.h"
+
 
 class Player
 {
@@ -26,7 +26,6 @@ public:
 
 private:
     // Sound handler for managing player-related sound effects
-    std::unique_ptr<SoundHandler> _sound;
 
     // The sprite representing the player
     sf::Sprite playerSpr;

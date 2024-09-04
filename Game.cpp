@@ -5,8 +5,14 @@ Game::Game()
     _wnd = new sf::RenderWindow(sf::VideoMode(1280, 720), "Game Window");
     _textureManager = new TextureManager();
     _display = new Display("Recursos/Fuentes/junegull.ttf");
-    _display->StartCountdown(10, 1000, 100);
+    _display->StartCountdown(70, 1000, 100);
+    _sound = new SoundHandler();
     _player = new Player(_textureManager->GetTexture("player"));
+
+    backgrond.setTexture(_textureManager->GetTexture("background"));
+    backgrond.setScale(1.6, 1.3);
+
+    gameScore = 10;
 }
 
 void Game::Loop()
@@ -64,7 +70,7 @@ void Game::Update(float delta)
     {
         float randomX = static_cast<float>(rand() % static_cast<int>(_wnd->getSize().x));
         float randomVelocityX = static_cast<float>((rand() % 200) - 100) / 100.0f; // Horizontal velocity between -1.0 and 1.0
-        _rocks.push_back(Stone(_textureManager->GetTexture("stone"), randomVelocityX, randomX,80,0 ));
+        _rocks.push_back(Stone(_textureManager->GetTexture("stone"), randomVelocityX, randomX,gameScore,0 ));
         rockSpawn.restart();
     }
 }
@@ -98,6 +104,8 @@ void Game::ProcessEvents()
 void Game::Draw()
 {
     _wnd->clear(sf::Color::White);
+
+    _wnd->draw(backgrond);
 
     // Draw player
     _player->Draw(_wnd);
@@ -133,7 +141,8 @@ void Game::CheckCollisions()
                 stoneIt = _rocks.erase(stoneIt);
                 bulletIt = _bullets.erase(bulletIt);
                 bulletRemoved = true;
-                gameScore++;
+                gameScore += 10;
+                _sound->playHitSound();
                 break;
             }
             else

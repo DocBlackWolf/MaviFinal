@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "TextureManager.h"
+#include "SoundHandler.h"
 #include "Bullet.h"
 #include "Stone.h"
 #include "Display.h"
@@ -21,6 +22,8 @@ private:
 	TextureManager* _textureManager;
 	//display
 	Display* _display;
+	//sundHandler
+	SoundHandler* _sound;
 	//Game objects
 	Player* _player;
 	std::vector<Bullet> _bullets;
@@ -32,6 +35,9 @@ private:
 
 	//values
 	int gameScore;
+
+	//Sprite
+	sf::Sprite backgrond;
 
 public:
 

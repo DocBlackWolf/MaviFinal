@@ -10,7 +10,7 @@
         }
         displayText.setFont(font);
         displayText.setCharacterSize(24); // Default size
-        displayText.setFillColor(sf::Color::Black); // Default color
+        displayText.setFillColor(sf::Color::Magenta); // Default color
     }
 
     // Method to set custom text

@@ -1,8 +1,7 @@
 #include "Player.h"
 
 Player::Player(const sf::Texture& texture)
-    : PlayerPos(100.0f, 500.0f), JumpSpeed(800.0f), Jumped(false),
-    _sound(std::make_unique<SoundHandler>())
+    : PlayerPos(100.0f, 500.0f), JumpSpeed(800.0f), Jumped(false)
 {
     playerSpr.setTexture(texture);
     playerSpr.setScale(0.7f, 0.7f);
