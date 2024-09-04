@@ -4,7 +4,8 @@ Game::Game()
 {
     _wnd = new sf::RenderWindow(sf::VideoMode(1280, 720), "Game Window");
     _textureManager = new TextureManager();
-    _display = new Display();
+    _display = new Display("Recursos/Fuentes/junegull.ttf");
+    _display->StartCountdown(60, 300, 300);
     _player = new Player(_textureManager->GetTexture("player"));
 }
 
@@ -25,7 +26,7 @@ void Game::Loop()
 
 void Game::Update(float delta)
 {
-    display.Update();
+    _display->Update();
 
     _player->Movement(delta);
 
@@ -100,6 +101,9 @@ void Game::Draw()
     {
         rock.Draw(_wnd);
     }
+
+    // Draw clock
+    _display->Draw(_wnd);
 
     _wnd->display();
 }
